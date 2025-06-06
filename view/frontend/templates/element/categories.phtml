@@ -1,0 +1,33 @@
+<?php
+/**
+ * Cytracon
+ *
+ * This source file is subject to the Cytracon Software License, which is available at https://www.cytracon.com/license
+ * Do not edit or add to this file if you wish to upgrade the to newer versions in the future.
+ * If you wish to customize this module for your needs.
+ * Please refer to https://www.cytracon.com for more information.
+ *
+ * @category  Cytracon
+ * @package   Cytracon_ProductPageBuilder
+ * @copyright Copyright (C) 2019 Cytracon (https://www.cytracon.com)
+ */
+
+// @codingStandardsIgnoreFile
+/**
+ * @var $block \Cytracon\ProductPageBuilder\Block\Product\Element\Categories
+ */
+
+$product    = $this->getProduct();
+$collection = $this->getCollection();
+$count      = $collection->count();
+?>
+<?php if ($count) { ?>
+	<div class="ppbd-product-categories">
+		<label><?= __('Categories: ') ?></label>
+		<?php $k = 0; ?>
+		<?php foreach ($collection->getItems() as $category) { ?>
+			<a href="<?= $category->getUrl() ?>"><?= $category->getName() ?></a><?= ($k!=($count-1)) ? ', ' : '' ?>
+			<?php $k++ ?>
+		<?php } ?>
+	</div>
+<?php } ?>
